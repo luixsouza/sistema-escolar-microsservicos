@@ -5,7 +5,7 @@ import { Professor } from '../models/professor.model';
 
 @Injectable({ providedIn: 'root' })
 export class ProfessorService {
-  private readonly url = 'http://localhost:8080/api/professores';
+  private readonly url = '/api/professores';
 
   constructor(private http: HttpClient) {}
 

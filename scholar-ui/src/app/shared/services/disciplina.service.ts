@@ -5,7 +5,7 @@ import { Disciplina } from '../models/disciplina.model';
 
 @Injectable({ providedIn: 'root' })
 export class DisciplinaService {
-  private readonly url = 'http://localhost:8080/api/disciplinas';
+  private readonly url = '/api/disciplinas';
 
   constructor(private http: HttpClient) {}
 

@@ -5,7 +5,7 @@ import { Aluno } from '../models/aluno.model';
 
 @Injectable({ providedIn: 'root' })
 export class AlunoService {
-  private readonly url = 'http://localhost:8080/api/alunos';
+  private readonly url = '/api/alunos';
 
   constructor(private http: HttpClient) {}
 

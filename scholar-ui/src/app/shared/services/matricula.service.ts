@@ -5,7 +5,7 @@ import { Matricula } from '../models/matricula.model';
 
 @Injectable({ providedIn: 'root' })
 export class MatriculaService {
-  private readonly url = 'http://localhost:8080/api/matriculas';
+  private readonly url = '/api/matriculas';
 
   constructor(private http: HttpClient) {}
 

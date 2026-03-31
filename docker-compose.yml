@@ -74,3 +74,11 @@ services:
         condition: service_started
       subject-service:
         condition: service_started
+
+  scholar-ui:
+    build:
+      context: ./scholar-ui
+    ports:
+      - "4200:80"
+    depends_on:
+      - api-gateway
