@@ -18,7 +18,7 @@ spring:
         - id: subject-service
           uri: lb://subject-service
           predicates:
-            - Path=/api/subjects/**
+            - Path=/api/disciplinas/**
         - id: enrollment-service
           uri: lb://enrollment-service
           predicates:
