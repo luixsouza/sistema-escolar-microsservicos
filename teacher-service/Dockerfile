@@ -2,7 +2,7 @@ FROM maven:3.9-eclipse-temurin-25 AS build
 WORKDIR /app
 COPY pom.xml .
 COPY teacher-service ./teacher-service
-RUN mvn -pl teacher-service -am clean package -DskipTests
+RUN mvn -f teacher-service/pom.xml clean package -DskipTests
 
 FROM eclipse-temurin:25-jre
 WORKDIR /app

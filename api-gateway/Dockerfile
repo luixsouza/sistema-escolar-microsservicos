@@ -2,7 +2,7 @@ FROM maven:3.9-eclipse-temurin-25 AS build
 WORKDIR /app
 COPY pom.xml .
 COPY api-gateway ./api-gateway
-RUN mvn -pl api-gateway -am clean package -DskipTests
+RUN mvn -f api-gateway/pom.xml clean package -DskipTests
 
 FROM eclipse-temurin:25-jre
 WORKDIR /app
