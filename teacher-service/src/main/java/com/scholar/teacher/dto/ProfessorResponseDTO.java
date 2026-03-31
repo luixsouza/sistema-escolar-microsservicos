@@ -1,20 +1,18 @@
 package com.scholar.teacher.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
 
-@Schema(name = "TeacherRequest", description = "Dados para criacao/atualizacao de professor")
-public record TeacherRequestDTO(
+@Schema(name = "ProfessorResponse", description = "Dados do professor retornados pela API")
+public record ProfessorResponseDTO(
+        @Schema(description = "ID do professor", example = "1")
+        Long id,
+
         @Schema(description = "Nome completo do professor", example = "Maria Oliveira")
-        @NotBlank
-        String name,
+        String nome,
 
         @Schema(description = "Email institucional", example = "maria.oliveira@ifsp.edu.br")
-        @NotBlank @Email
         String email,
 
         @Schema(description = "Titulacao academica", example = "Doutorado em Ciencia da Computacao")
-        @NotBlank
-        String degree
+        String titulacao
 ) {}

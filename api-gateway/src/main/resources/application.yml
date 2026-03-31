@@ -14,7 +14,7 @@ spring:
         - id: teacher-service
           uri: lb://teacher-service
           predicates:
-            - Path=/api/teachers/**
+            - Path=/api/professores/**
         - id: subject-service
           uri: lb://subject-service
           predicates:

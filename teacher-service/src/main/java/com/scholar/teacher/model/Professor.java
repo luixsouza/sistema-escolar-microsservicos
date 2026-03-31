@@ -7,31 +7,31 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "teachers")
-public class Teacher {
+@Table(name = "professores")
+public class Professor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
+    private String nome;
     private String email;
-    private String degree;
+    private String titulacao;
 
-    public Teacher() {}
+    public Professor() {}
 
-    public Teacher(Long id, String name, String email, String degree) {
+    public Professor(Long id, String nome, String email, String titulacao) {
         this.id = id;
-        this.name = name;
+        this.nome = nome;
         this.email = email;
-        this.degree = degree;
+        this.titulacao = titulacao;
     }
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
+    public String getNome() { return nome; }
+    public void setNome(String nome) { this.nome = nome; }
     public String getEmail() { return email; }
     public void setEmail(String email) { this.email = email; }
-    public String getDegree() { return degree; }
-    public void setDegree(String degree) { this.degree = degree; }
+    public String getTitulacao() { return titulacao; }
+    public void setTitulacao(String titulacao) { this.titulacao = titulacao; }
 }
