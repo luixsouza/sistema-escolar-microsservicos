@@ -22,7 +22,7 @@ spring:
         - id: enrollment-service
           uri: lb://enrollment-service
           predicates:
-            - Path=/api/enrollments/**
+            - Path=/api/matriculas/**
 
 eureka:
   client:
