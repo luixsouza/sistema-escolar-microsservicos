@@ -15,7 +15,7 @@ import { ProfessorDialogComponent } from './professor-dialog.component';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProfessoresComponent {
-  columns = ['nome', 'email', 'titulacao', 'acoes'];
+  columns = ['nome', 'titulacao', 'acoes'];
   professores = signal<Professor[]>([]);
 
   constructor(
@@ -31,7 +31,7 @@ export class ProfessoresComponent {
   }
 
   abrir(professor?: Professor) {
-    this.dialog.open(ProfessorDialogComponent, { width: '400px', data: professor ? { ...professor } : null })
+    this.dialog.open(ProfessorDialogComponent, { width: '480px', data: professor ? { ...professor } : null })
       .afterClosed().subscribe(result => { if (result) this.carregar(); });
   }
 

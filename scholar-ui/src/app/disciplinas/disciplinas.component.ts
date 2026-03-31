@@ -31,7 +31,7 @@ export class DisciplinasComponent {
   }
 
   abrir(disciplina?: Disciplina) {
-    this.dialog.open(DisciplinaDialogComponent, { width: '400px', data: disciplina ? { ...disciplina } : null })
+    this.dialog.open(DisciplinaDialogComponent, { width: '480px', data: disciplina ? { ...disciplina } : null })
       .afterClosed().subscribe(result => { if (result) this.carregar(); });
   }
 

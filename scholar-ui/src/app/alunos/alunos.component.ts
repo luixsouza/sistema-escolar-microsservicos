@@ -15,7 +15,7 @@ import { AlunoDialogComponent } from './aluno-dialog.component';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AlunosComponent {
-  columns = ['nome', 'email', 'matricula', 'acoes'];
+  columns = ['nome', 'matricula', 'acoes'];
   alunos = signal<Aluno[]>([]);
 
   constructor(
@@ -31,7 +31,7 @@ export class AlunosComponent {
   }
 
   abrir(aluno?: Aluno) {
-    this.dialog.open(AlunoDialogComponent, { width: '400px', data: aluno ? { ...aluno } : null })
+    this.dialog.open(AlunoDialogComponent, { width: '480px', data: aluno ? { ...aluno } : null })
       .afterClosed().subscribe(result => { if (result) this.carregar(); });
   }
 

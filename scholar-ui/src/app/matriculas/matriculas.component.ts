@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, signal, computed } from '@angular/core';
+import { Component, ChangeDetectionStrategy, signal } from '@angular/core';
 import { forkJoin } from 'rxjs';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
@@ -8,7 +8,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatriculaService } from '../shared/services/matricula.service';
 import { AlunoService } from '../shared/services/aluno.service';
 import { DisciplinaService } from '../shared/services/disciplina.service';
-import { Matricula } from '../shared/models/matricula.model';
 import { Aluno } from '../shared/models/aluno.model';
 import { Disciplina } from '../shared/models/disciplina.model';
 import { MatriculaDialogComponent } from './matricula-dialog.component';
@@ -16,7 +15,9 @@ import { MatriculaDialogComponent } from './matricula-dialog.component';
 interface MatriculaView {
   id: number;
   alunoNome: string;
+  alunoMatricula: string;
   disciplinaNome: string;
+  cargaHoraria: number;
 }
 
 @Component({
@@ -26,7 +27,7 @@ interface MatriculaView {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MatriculasComponent {
-  columns = ['alunoNome', 'disciplinaNome', 'acoes'];
+  columns = ['aluno', 'disciplina', 'acoes'];
   matriculas = signal<MatriculaView[]>([]);
 
   constructor(
@@ -45,18 +46,24 @@ export class MatriculasComponent {
       alunos: this.alunoService.listar(),
       disciplinas: this.disciplinaService.listar()
     }).subscribe(({ matriculas, alunos, disciplinas }) => {
-      const alunoMap = new Map(alunos.map(a => [a.id!, a.nome]));
-      const discMap = new Map(disciplinas.map(d => [d.id!, d.nome]));
-      this.matriculas.set(matriculas.map(m => ({
-        id: m.id!,
-        alunoNome: alunoMap.get(m.alunoId) ?? `#${m.alunoId}`,
-        disciplinaNome: discMap.get(m.disciplinaId) ?? `#${m.disciplinaId}`
-      })));
+      const alunoMap = new Map(alunos.map(a => [a.id!, a]));
+      const discMap = new Map(disciplinas.map(d => [d.id!, d]));
+      this.matriculas.set(matriculas.map(m => {
+        const aluno = alunoMap.get(m.alunoId);
+        const disc = discMap.get(m.disciplinaId);
+        return {
+          id: m.id!,
+          alunoNome: aluno?.nome ?? `#${m.alunoId}`,
+          alunoMatricula: aluno?.matricula ?? '',
+          disciplinaNome: disc?.nome ?? `#${m.disciplinaId}`,
+          cargaHoraria: disc?.cargaHoraria ?? 0
+        };
+      }));
     });
   }
 
   abrir() {
-    this.dialog.open(MatriculaDialogComponent, { width: '400px' })
+    this.dialog.open(MatriculaDialogComponent, { width: '480px' })
       .afterClosed().subscribe(result => { if (result) this.carregar(); });
   }
 

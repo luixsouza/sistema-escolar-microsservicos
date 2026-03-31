@@ -4,32 +4,45 @@ import { MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/materia
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AlunoService } from '../shared/services/aluno.service';
 import { Aluno } from '../shared/models/aluno.model';
 
 @Component({
   selector: 'app-aluno-dialog',
-  imports: [FormsModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatButtonModule],
+  imports: [FormsModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule],
   template: `
-    <h2 mat-dialog-title>{{ data ? 'Editar' : 'Novo' }} Aluno</h2>
     <mat-dialog-content>
+      <div class="dialog-icon">
+        <mat-icon>school</mat-icon>
+        <div class="dialog-title-text">
+          <h2>{{ data ? 'Editar' : 'Novo' }} Aluno</h2>
+          <p>{{ data ? 'Atualize os dados do aluno' : 'Preencha os dados para cadastrar' }}</p>
+        </div>
+      </div>
+
       <mat-form-field appearance="outline" class="full-width">
-        <mat-label>Nome</mat-label>
-        <input matInput [(ngModel)]="aluno.nome" required>
+        <mat-label>Nome completo</mat-label>
+        <input matInput [(ngModel)]="aluno.nome" required placeholder="Ex: Joao da Silva">
       </mat-form-field>
-      <mat-form-field appearance="outline" class="full-width">
-        <mat-label>Email</mat-label>
-        <input matInput [(ngModel)]="aluno.email" required type="email">
-      </mat-form-field>
-      <mat-form-field appearance="outline" class="full-width">
-        <mat-label>Matricula</mat-label>
-        <input matInput [(ngModel)]="aluno.matricula" required>
-      </mat-form-field>
+
+      <div class="form-row">
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput [(ngModel)]="aluno.email" required type="email" placeholder="email@ifsp.edu.br">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Matricula</mat-label>
+          <input matInput [(ngModel)]="aluno.matricula" required placeholder="Ex: 2024001">
+        </mat-form-field>
+      </div>
     </mat-dialog-content>
     <mat-dialog-actions align="end">
       <button mat-button mat-dialog-close>Cancelar</button>
-      <button mat-flat-button (click)="salvar()" [disabled]="!aluno.nome || !aluno.email || !aluno.matricula">Salvar</button>
+      <button mat-flat-button (click)="salvar()" [disabled]="!aluno.nome || !aluno.email || !aluno.matricula">
+        {{ data ? 'Atualizar' : 'Cadastrar' }}
+      </button>
     </mat-dialog-actions>
   `
 })

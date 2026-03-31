@@ -4,6 +4,7 @@ import { MatDialogRef, MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatriculaService } from '../shared/services/matricula.service';
 import { AlunoService } from '../shared/services/aluno.service';
@@ -13,18 +14,26 @@ import { Disciplina } from '../shared/models/disciplina.model';
 
 @Component({
   selector: 'app-matricula-dialog',
-  imports: [FormsModule, MatDialogModule, MatFormFieldModule, MatSelectModule, MatButtonModule],
+  imports: [FormsModule, MatDialogModule, MatFormFieldModule, MatSelectModule, MatButtonModule, MatIconModule],
   template: `
-    <h2 mat-dialog-title>Nova Matricula</h2>
     <mat-dialog-content>
+      <div class="dialog-icon">
+        <mat-icon>assignment</mat-icon>
+        <div class="dialog-title-text">
+          <h2>Nova Matricula</h2>
+          <p>Selecione o aluno e a disciplina</p>
+        </div>
+      </div>
+
       <mat-form-field appearance="outline" class="full-width">
         <mat-label>Aluno</mat-label>
         <mat-select [(ngModel)]="alunoId" required>
           @for (a of alunos; track a.id) {
-            <mat-option [value]="a.id">{{ a.nome }} ({{ a.matricula }})</mat-option>
+            <mat-option [value]="a.id">{{ a.nome }} — {{ a.matricula }}</mat-option>
           }
         </mat-select>
       </mat-form-field>
+
       <mat-form-field appearance="outline" class="full-width">
         <mat-label>Disciplina</mat-label>
         <mat-select [(ngModel)]="disciplinaId" required>
