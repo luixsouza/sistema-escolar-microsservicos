@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.scholar</groupId>
-        <artifactId>scholar-system</artifactId>
+        <groupId>com.escolar</groupId>
+        <artifactId>sistema-escolar</artifactId>
         <version>1.0.0</version>
     </parent>
 

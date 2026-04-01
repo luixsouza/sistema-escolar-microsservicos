@@ -11,23 +11,23 @@
         <relativePath/>
     </parent>
 
-    <groupId>com.scholar</groupId>
-    <artifactId>scholar-system</artifactId>
+    <groupId>com.escolar</groupId>
+    <artifactId>sistema-escolar</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>
 
     <properties>
-        <java.version>25</java.version>
+        <java.version>21</java.version>
         <spring-cloud.version>2024.0.1</spring-cloud.version>
     </properties>
 
     <modules>
         <module>discovery-server</module>
         <module>api-gateway</module>
-        <module>student-service</module>
-        <module>teacher-service</module>
-        <module>subject-service</module>
-        <module>enrollment-service</module>
+        <module>servico-aluno</module>
+        <module>servico-professor</module>
+        <module>servico-disciplina</module>
+        <module>servico-matricula</module>
     </modules>
 
     <dependencyManagement>

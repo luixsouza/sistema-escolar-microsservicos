@@ -7,20 +7,20 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: student-service
-          uri: lb://student-service
+        - id: servico-aluno
+          uri: lb://servico-aluno
           predicates:
             - Path=/api/alunos/**
-        - id: teacher-service
-          uri: lb://teacher-service
+        - id: servico-professor
+          uri: lb://servico-professor
           predicates:
             - Path=/api/professores/**
-        - id: subject-service
-          uri: lb://subject-service
+        - id: servico-disciplina
+          uri: lb://servico-disciplina
           predicates:
             - Path=/api/disciplinas/**
-        - id: enrollment-service
-          uri: lb://enrollment-service
+        - id: servico-matricula
+          uri: lb://servico-matricula
           predicates:
             - Path=/api/matriculas/**
 

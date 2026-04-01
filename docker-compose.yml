@@ -24,10 +24,10 @@ services:
       discovery-server:
         condition: service_healthy
 
-  student-service:
+  servico-aluno:
     build:
       context: .
-      dockerfile: student-service/Dockerfile
+      dockerfile: servico-aluno/Dockerfile
     ports:
       - "8081:8081"
     environment:
@@ -36,10 +36,10 @@ services:
       discovery-server:
         condition: service_healthy
 
-  teacher-service:
+  servico-professor:
     build:
       context: .
-      dockerfile: teacher-service/Dockerfile
+      dockerfile: servico-professor/Dockerfile
     ports:
       - "8082:8082"
     environment:
@@ -48,10 +48,10 @@ services:
       discovery-server:
         condition: service_healthy
 
-  subject-service:
+  servico-disciplina:
     build:
       context: .
-      dockerfile: subject-service/Dockerfile
+      dockerfile: servico-disciplina/Dockerfile
     ports:
       - "8083:8083"
     environment:
@@ -60,10 +60,10 @@ services:
       discovery-server:
         condition: service_healthy
 
-  enrollment-service:
+  servico-matricula:
     build:
       context: .
-      dockerfile: enrollment-service/Dockerfile
+      dockerfile: servico-matricula/Dockerfile
     ports:
       - "8084:8084"
     environment:
@@ -71,14 +71,14 @@ services:
     depends_on:
       discovery-server:
         condition: service_healthy
-      student-service:
+      servico-aluno:
         condition: service_started
-      subject-service:
+      servico-disciplina:
         condition: service_started
 
-  scholar-ui:
+  escolar-ui:
     build:
-      context: ./scholar-ui
+      context: ./escolar-ui
     ports:
       - "4200:80"
     depends_on:
