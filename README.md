@@ -19,7 +19,7 @@ O objetivo é demonstrar na prática a arquitetura de microsserviços, aplicando
      │   Serviço    │ │  Serviço  │ │   Serviço    │ │   Serviço    │
      │    Aluno     │ │ Professor │ │  Disciplina  │ │  Matrícula   │
      │   (:8081)    │ │  (:8082)  │ │   (:8083)    │ │   (:8084)    │
-     │   H2 DB     │ │   H2 DB   │ │    H2 DB     │ │   H2 DB      │
+     │    H2 DB     │ │   H2 DB   │ │    H2 DB     │ │   H2 DB      │
      └──────────────┘ └───────────┘ └──────────────┘ └──────────────┘
 ```
 
@@ -45,7 +45,7 @@ Cada microsserviço possui seu próprio banco de dados em memória (H2), seguind
 | servico-aluno        | 8081  | CRUD de alunos                                    |
 | servico-professor    | 8082  | CRUD de professores                               |
 | servico-disciplina   | 8083  | CRUD de disciplinas                               |
-| servico-matricula    | 8084  | Matrículas (consome aluno e disciplina via Feign)  |
+| servico-matricula    | 8084  | Matrículas (consome aluno e disciplina via Feign) |
 
 ## Como executar
 
