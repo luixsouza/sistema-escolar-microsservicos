@@ -54,3 +54,16 @@ docker compose up --build
 ```
 
 Acesse a aplicação em `http://localhost:4200`.
+
+## Testando com Swagger
+
+Cada microsserviço expõe uma interface Swagger UI para testar os endpoints da API diretamente pelo navegador.
+
+| Serviço           | Swagger UI                                      |
+|-------------------|------------------------------------------------|
+| servico-aluno     | http://localhost:8081/swagger-ui.html           |
+| servico-professor | http://localhost:8082/swagger-ui.html           |
+| servico-disciplina| http://localhost:8083/swagger-ui.html           |
+| servico-matricula | http://localhost:8084/swagger-ui.html           |
+
+Abra qualquer um dos links acima, selecione o endpoint desejado, clique em **Try it out**, preencha os parâmetros e clique em **Execute** para enviar a requisição.
